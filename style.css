@@ -1,0 +1,138 @@
+@font-face{
+    font-family: Bebas;
+    src: url('Bebas-Regular.ttf') format(trutype);
+}
+
+body{
+    background-color: #eee;
+    font-family: Bebas-Regular;
+}
+
+h1{
+    text-align: center;
+    font-size: 70px;
+    margin: 50px 0;
+    text-shadow: 3px 1px 3px white;
+}
+
+.container{
+    width: 600px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 0 0 3px grey;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.gallery li{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: grey 5px solid;
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
+
+.gallery li img{
+    border-radius: 50%;
+}
+
+.gallery li span{
+    width: 120px;
+    height: 120px;
+    display: block;
+    background-color: rgba(200, 200, 200, .5);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    border-radius: 50%;
+    color: #333333;
+    opacity: 0;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.gallery li a:hover span{
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+.clear{
+    clear: both;
+}
+
+.overlay{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    background-color:rgba(0, 0, 0, 0);
+    transition: .5s;
+    text-align: center;
+    padding: 100px;
+}
+
+.overlay:target{
+    bottom: 0;
+    right: 0;
+    background-color:rgba(0, 0, 0, .8);
+    width: auto;
+    height: auto;
+   
+}
+
+.overlay img{
+    max-height: 100%;
+    box-shadow: 0 0 3px 2px white;
+}
+
+.overlay:target img{
+    animation: Zoom .5s ;
+}
+
+.overlay .close{
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    margin-left: -11px;
+     background-color: rgba(200, 200, 200, .5);
+    text-decoration: none;
+    opacity: 0;
+    line-height: 14px;
+    border: 1px solid whitesmoke;
+    padding: 5px;
+    display: inline;
+}
+
+.overlay:target .close{
+    animation: close 1s .5s forwards;
+}
+
+@keyframes close{
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes Zoom{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
